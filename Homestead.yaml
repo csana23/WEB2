@@ -1,0 +1,19 @@
+ip: 192.168.12.12
+memory: 2048
+cpus: 1
+provider: virtualbox
+authorize: ~/.ssh/id_rsaWEB2.pub
+keys:
+    - ~/.ssh/id_rsaWEB2
+folders:
+    -
+        map: /Users/richamac/Documents/GitHub/WEB2
+        to: /home/vagrant/code
+sites:
+    -
+        map: travelwithrichard.com
+        to: /home/vagrant/code/public
+databases:
+    - web2_db
+name: web21
+hostname: web21
