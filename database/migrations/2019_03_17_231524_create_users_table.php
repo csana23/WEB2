@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSwitchesTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,11 +12,11 @@ class CreateSwitchesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('switches', function(Blueprint $table)
+		Schema::create('users', function(Blueprint $table)
 		{
-			$table->string('username');
-			$table->string('destination')->index('destination');
-			$table->primary(['username','destination']);
+			$table->string('name');
+			$table->string('email')->primary();
+			$table->string('password');
 		});
 	}
 
@@ -28,7 +28,7 @@ class CreateSwitchesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('switches');
+		Schema::drop('users');
 	}
 
 }

@@ -15,7 +15,7 @@ class AddForeignKeysToSwitchesTable extends Migration {
 		Schema::table('switches', function(Blueprint $table)
 		{
 			$table->foreign('destination', 'switches_ibfk_1')->references('destination')->on('travels')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('username', 'switches_ibfk_2')->references('username')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('email', 'switches_ibfk_2')->references('email')->on('users')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
