@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in, bitch! 
+
+                    <a href="{{ route('newTravel') }}">  </a>
                 </div>
             </div>
         </div>
