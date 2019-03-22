@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Route::get('/newTravel', function() {
     return view('newTravel');
-});
+})->name('newTravel');
 
 Auth::routes();
 

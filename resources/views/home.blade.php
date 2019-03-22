@@ -16,7 +16,7 @@
 
                     You are logged in, bitch! 
 
-                    <a href="{{ route('newTravel') }}">  </a>
+                    <a href="{{ route('newTravel') }}"> This is a link to newTravel </a>
                 </div>
             </div>
         </div>
