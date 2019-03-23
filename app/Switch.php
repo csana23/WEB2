@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Switch extends Model
+class Switch_BOI extends Model
 {
     //
 }
