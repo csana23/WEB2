@@ -10,6 +10,7 @@
 @endpush
 
 @section('content')
+
 <form action="/newtravel" method="post">
     {{ csrf_field() }}
 
@@ -30,17 +31,18 @@
             </div>
         </div>
 
+        
         <div class="col-lg-6">
             <div class="form-group">
-                <label for="lead">Intro</label>
-                <input type="text" name="title" id="title" class="form-control">
+                <label for="intro">Intro</label>
+                <input type="text" name="intro" id="intro" class="form-control">
             </div>
         </div>
 
-        <div class="col-12">
+        <div class="col-6">
             <div class="form-group">
-                <label for="content">Description</label>
-                <textarea name="content" id="content" class="form-control"></textarea>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" class="form-control"></textarea>
             </div>
         </div>
 
