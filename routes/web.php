@@ -23,3 +23,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/new', 'BlogPostController@create')->name('blog.create');
+//Route::post('/ujblogmentes', 'BlogPostController@store');
+
+//Route::get('/blog/{blogId}', 'BlogPostController@show')->name('blog.show');
+

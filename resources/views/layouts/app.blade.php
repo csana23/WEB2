@@ -10,11 +10,13 @@
     <!-- Title -->
     <title>@yield('pageTitle')</title>
 
-    <!-- Scripts -->
+    <!-- Scripts defer -->
     @stack('head')
-    <?php //{{ asset('js/app.js') }} ?>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -27,8 +29,8 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Index
+                <a class="navbar-brand" href="{{ url('/home') }}">
+                    Home
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -78,8 +80,8 @@
         
         <main class="py-4">
             @yield('content')
-            @stack('scripts')
         </main>
     </div>
+    @yield('scripts')
 </body>
 </html>

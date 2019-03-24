@@ -1,13 +1,6 @@
 @extends('layouts/app') 
 
-@section('pageTitle', 'Yolooo') 
-
-@push('head')
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-@endpush
+@section('pageTitle', 'Yolooo')
 
 @section('content')
 
@@ -49,19 +42,15 @@
         <div class="col-6 text-left">
             <div class="form-group">
                 <label for="daterange">Pick date range</label>
-                <input type="text" name="daterange" value="03/23/2019 - 03/24/2019" />
-                
-                @push('scripts')
+                <input type="text" name="daterange" id='boi' value="03/23/2019 - 03/24/2019" />
                 <script>
-                    $(function() {
-                          $('input[name="daterange"]').daterangepicker({
-                            opens: 'right'
-                          }, function(start, end, label) {
-                            console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-                          });
+                    $(function() { $('input[name="daterange"]').daterangepicker({ opens: 'right' }, function(start, end, label) { 
+                        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+                        var from = start.format('YYYY-MM-DD');
+                        var to = end.format('YYYY-MM-DD');
+                        }); 
                         });
                 </script>
-                @endpush
             </div>
         </div>
 
