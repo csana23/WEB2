@@ -34,8 +34,8 @@
 
         <div class="col-6">
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control"></textarea>
+                <label for="desc">Description</label>
+                <textarea name="desc" id="desc" class="form-control"></textarea>
             </div>
         </div>
 
@@ -77,7 +77,7 @@
 
         <div class="form-group col-2">
             <label for="max">Max num of bitches</label>
-            <select class="form-control" id="max">
+            <select class="form-control" name="max" id="max">
               <option>1</option>
               <option>2</option>
               <option>3</option>

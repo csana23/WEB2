@@ -18,8 +18,18 @@ class TravelController extends Controller
     }
 
     public function store(Request $request) {
+
         $newTravel = new Travel($request->all());
-        echo $request;
+
+        $newTravel->validate($request, [
+            'destination' => 'required',
+            'intro' => 'required',
+            'desc' => 'required',
+            'from' => 'required',
+            'to' => 'required',
+            'max' => 'required'
+        ]);
+
         $newTravel->save();
 
         return redirect('/home');
@@ -30,4 +40,6 @@ class TravelController extends Controller
 
         return view('indTravel', compact('travel'));
     }
+
+    //validate
 }
