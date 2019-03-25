@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="/saveNewTravel" method="post">
+<form action="/saveNewTravel" method="post" id="myform">
     {{ csrf_field() }}
 
     <h1 class="mt-2">New Travel</h1>
@@ -40,23 +40,40 @@
         </div>
 
         <div class="col-3 text-left">
-            <?php
-                $from = "";
-                $to = ""; 
-            ?>
             <div class="form-group">
-                <label for="daterange">Pick date range</label>
-                <input type="text" name="daterange" id='boi' value="03/23/2019 - 03/24/2019" class="form-control" />
-                <script>
-                    $(function() { $('input[name="daterange"]').daterangepicker({ opens: 'right' }, function(start, end, label) { 
-                        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
-                        var from = start.format('YYYY-MM-DD');
-                        var to = end.format('YYYY-MM-DD');
-                        }); 
-                    });
-                </script>
+                <label for="from">Pick start date</label>
+                <input type="date" class="validDate" name="from" id="from" />
             </div>
         </div>
+
+        <div class="col-3 text-left">
+            <div class="form-group">
+                <label for="to">Pick end date</label>
+                <input type="date" class="validDate" name="to" id="to" />
+            </div>
+        </div>
+
+        <script>
+            var today = new Date(); 
+            var dd = today.getDate(); 
+            var mm = today.getMonth()+1; //January is 0! 
+            var yyyy = today.getFullYear();
+
+            if(dd<10){ 
+                dd='0' +dd 
+            } 
+
+            if(mm<10){ 
+                mm='0' +mm 
+            } 
+
+            today=yyyy+ '-'+mm+ '-'+dd; 
+            document.getElementById("from").setAttribute("min", today);
+            document.getElementById("to").setAttribute("min", today);
+        </script>
+
+        <script type="text/javascript" src="{{ URL::asset('js/checkDate.js') }}"></script>
+
 
         <div class="form-group col-2">
             <label for="max">Max num of bitches</label>
