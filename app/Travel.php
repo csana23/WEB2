@@ -14,4 +14,7 @@ class Travel extends Model
         'to',
         'max'
     ];
+
+    //timestamp bullshit
+    public $timestamps = false;
 }

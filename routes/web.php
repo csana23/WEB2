@@ -23,8 +23,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/new', 'HomeController@create')->name('blog.create');
-Route::post('/saveNewTravel', 'HomeController@store');
+Route::get('/newTravel', 'TravelController@create')->name('travel.create');
+Route::post('/saveNewTravel', 'TravelController@store');
 
-//Route::get('/blog/{blogId}', 'BlogPostController@show')->name('blog.show');
+Route::get('/travels/{destination}', 'TravelController@show')->name('travel.show');
 

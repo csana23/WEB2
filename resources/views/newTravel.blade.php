@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="/newtravel" method="post">
+<form action="/saveNewTravel" method="post">
     {{ csrf_field() }}
 
     <h1 class="mt-2">New Travel</h1>
@@ -40,6 +40,10 @@
         </div>
 
         <div class="col-3 text-left">
+            <?php
+                $from = "";
+                $to = ""; 
+            ?>
             <div class="form-group">
                 <label for="daterange">Pick date range</label>
                 <input type="text" name="daterange" id='boi' value="03/23/2019 - 03/24/2019" class="form-control" />
@@ -52,6 +56,22 @@
                     });
                 </script>
             </div>
+        </div>
+
+        <div class="form-group col-2">
+            <label for="max">Max num of bitches</label>
+            <select class="form-control" id="max">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
         </div>
 
         <div class="col-6 mt-5">
