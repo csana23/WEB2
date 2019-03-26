@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Travel;
 use Illuminate\Http\Request;
+use Illuminate\Support\MessageBag;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class TravelController extends Controller
 {
@@ -21,7 +23,8 @@ class TravelController extends Controller
 
         $newTravel = new Travel($request->all());
 
-        $newTravel->validate($request, [
+        
+        $validatedData = $request->validate([
             'destination' => 'required',
             'intro' => 'required',
             'desc' => 'required',
@@ -40,6 +43,4 @@ class TravelController extends Controller
 
         return view('indTravel', compact('travel'));
     }
-
-    //validate
 }

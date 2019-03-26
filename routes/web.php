@@ -21,10 +21,10 @@ Route::get('/newTravel', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
 
-Route::get('/newTravel', 'TravelController@create')->name('travel.create');
+//Route::get('/newTravel', 'TravelController@create')->name('travel.create'); ezzel van valami hiba
 Route::post('/saveNewTravel', 'TravelController@store');
 
-Route::get('/travels/{destination}', 'TravelController@show')->name('travel.show');
+//Route::get('/travels/{destination}', 'TravelController@show')->name('travel.show');
 
