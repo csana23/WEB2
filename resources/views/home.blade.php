@@ -3,25 +3,24 @@
 @section('pageTitle', 'Home')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
+    <div class="jumbotron mt-2">
+    <h1 class="display-4">Travels</h1>
+    <hr class="my-4">
+    <a class="btn btn-primary btn-lg" href="{{ route('newTravel') }}" role="button"> Create New Travel </a>
+    </div>
+    
+    <div class="row">
+        @foreach($travels as $travel)
+        <div class="col-lg-4 col-md-6">
+            <div class="card mb-3">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in, bitch! 
-
-                    <a href="{{ route('newTravel') }}"> This is a link to newTravel </a>
+                    <h5 class="card-title">{{ $travel->destination }}</h5>
+                    <p class="card-text">{{ $travel->intro}}</p>
+                    <a href="/travel/{{ $travel->destination }}" class="btn btn-primary">Details</a>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-</div>
 @endsection
+

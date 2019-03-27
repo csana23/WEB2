@@ -10,9 +10,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 class TravelController extends Controller
 {
     public function index() {
-        $travels = Travel::all();
-
-        return view('home', compact('travels'));
+        return view('home');
     }
 
     public function create() {

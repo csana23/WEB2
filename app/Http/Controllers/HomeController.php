@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Travel;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,10 +24,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $travels = Travel::all();
+
+        return view('home', compact('travels'));
     }
 
     public function create() {
         return view('newTravel');
+    }
+
+    public function show($destination) {
+        $travel = Travel::find('destination');
+
+        return view('indTravel', compact('travel'));
     }
 }
