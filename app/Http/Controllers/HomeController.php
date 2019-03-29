@@ -34,7 +34,7 @@ class HomeController extends Controller
     }
 
     public function show($destination) {
-        $travel = Travel::find('destination');
+        $travel = Travel::find($destination);
 
         return view('indTravel', compact('travel'));
     }

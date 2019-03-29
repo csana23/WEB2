@@ -11,6 +11,6 @@
 </nav>
 
 <div class="intro">
-    {!! $travel->intro !!}
+    {{ $travel->intro }}
 </div>
 @endsection

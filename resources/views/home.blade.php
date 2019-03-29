@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $travel->destination }}</h5>
                     <p class="card-text">{{ $travel->intro}}</p>
-                    <a href="/travel/{{ $travel->destination }}" class="btn btn-primary">Details</a>
+                    <a href="/travels/{{ $travel->destination }}" class="btn btn-primary">Details</a>
                 </div>
             </div>
         </div>
