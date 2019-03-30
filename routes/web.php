@@ -28,5 +28,6 @@ Route::get('/home', 'HomeController@index');
 Route::post('/saveNewTravel', 'HomeController@store');
 
 Route::get('/travels/{destination}', 'HomeController@show');
+Route::post('/travels/{destination}/joinTravel', 'HomeController@joinTravel');
 
 

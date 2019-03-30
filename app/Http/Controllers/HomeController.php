@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Travel;
 use App\Switch_DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -57,5 +58,19 @@ class HomeController extends Controller
         $travel = Travel::where('destination', $destination)->first();
 
         return view('indTravel', compact('travel'));
+    }
+
+    public function joinTravel($destination, Request $request, $username) {
+        //get max num of travellers allowed to join the travel
+        $max = DB::table('travels')->where('destination', $destination)->value('max');
+        
+        //get the num of traveller currently signed up for the travel
+        $current = DB::table('switches')->where('destination', $destination)->count();
+
+        if ($current < $max) {
+
+        } else {
+
+        }
     }
 }
