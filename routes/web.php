@@ -11,6 +11,9 @@
 |
 */
 
+use App\Travel;
+use App\Switch_DB;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -22,13 +25,8 @@ Route::get('/newTravel', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::post('/saveNewTravel', 'HomeController@store');
 
-//Route::get('/newTravel', 'TravelController@create')->name('travel.create'); ezzel van valami hiba
-Route::post('/saveNewTravel', 'TravelController@store');
+Route::get('/travels/{destination}', 'HomeController@show');
 
-//Route::get('/travels/{destination}', 'HomeController@show')->name('travel.show');
-
-Route::get('/travels/{destination}', function() {
-    return view('/indTravel');
-});
 

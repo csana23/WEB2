@@ -86,7 +86,7 @@
 
 
         <div class="form-group col-2">
-            <label for="max">Max num of bitches</label>
+            <label for="max">Max num. of travellers</label>
             <select class="form-control" name="max" id="max">
               <option>1</option>
               <option>2</option>
@@ -103,8 +103,7 @@
 
         <div class="col-6 mt-5">
             <div class="text-right">
-                <button type="submit" class="btn btn-primary">Save
-                    </button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </div>
         </div>
 </form>

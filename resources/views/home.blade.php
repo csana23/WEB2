@@ -15,7 +15,7 @@
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">{{ $travel->destination }}</h5>
-                    <p class="card-text">{{ $travel->intro}}</p>
+                    <p class="card-text">{{ $travel->intro }}</p>
                     <a href="/travels/{{ $travel->destination }}" class="btn btn-primary">Details</a>
                 </div>
             </div>

@@ -1,6 +1,6 @@
-@extends('layout/app') 
+@extends('layouts/app') 
 @section('content')
-<h1 class="mt-5">{{ $travel->destination }}</h1>
+<h1 class="mt-2">{{ $travel->destination }}</h1>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -10,7 +10,18 @@
     </ol>
 </nav>
 
-<div class="intro">
-    {{ $travel->intro }}
+<div class="jumbotron mt-5 col-6">
+    <h2> {{ $travel->intro }} </h2>
+    <hr class="my-4">
+    <h3> {{ $travel->desc }} </h3>
+
+    <div class="text-right">
+        <h4> {{ $travel->max }} </h4>
+    </div>
+
+    <div class="text-right mt-5">
+        <button class="btn btn-primary">Join Travel</button>
+    </div>
 </div>
+
 @endsection

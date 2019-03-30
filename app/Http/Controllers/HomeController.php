@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Travel;
+use App\Switch_DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,8 +34,27 @@ class HomeController extends Controller
         return view('newTravel');
     }
 
+    public function store(Request $request) {
+
+        $newTravel = new Travel($request->all());
+
+        
+        $validatedData = $request->validate([
+            'destination' => 'required',
+            'intro' => 'required',
+            'desc' => 'required',
+            'from' => 'required',
+            'to' => 'required',
+            'max' => 'required'
+        ]);
+
+        $newTravel->save();
+
+        return redirect('/home');
+    }
+
     public function show($destination) {
-        $travel = Travel::find($destination);
+        $travel = Travel::where('destination', $destination)->first();
 
         return view('indTravel', compact('travel'));
     }
