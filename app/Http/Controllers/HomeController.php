@@ -67,10 +67,15 @@ class HomeController extends Controller
         //get the num of traveller currently signed up for the travel
         $current = DB::table('switches')->where('destination', $destination)->count();
 
+        //it looks like I have to create a switch_db
+        $switch_db = new Switch_DB($request->all());
+
         if ($current < $max) {
-
+            $switch_db->save();
+            
+            return Redirect::to('/home')->with('success', true)->with('message','Trip joined successfully!');
         } else {
-
+            return Redirect::to('/home') -> withErrors($validator);
         }
     }
 }
