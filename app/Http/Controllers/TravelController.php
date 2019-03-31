@@ -17,25 +17,6 @@ class TravelController extends Controller
         return view('newTravel');
     }
 
-    public function store(Request $request) {
-
-        $newTravel = new Travel($request->all());
-
-        
-        $validatedData = $request->validate([
-            'destination' => 'required',
-            'intro' => 'required',
-            'desc' => 'required',
-            'from' => 'required',
-            'to' => 'required',
-            'max' => 'required'
-        ]);
-
-        $newTravel->save();
-
-        return redirect('/home');
-    }
-
     public function show($destination) {
         $travel = Travel::find('destination');
 

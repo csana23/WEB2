@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Switch_DB extends Model
+class Switches extends Model
 {
     protected $fillable = [
         'destination',

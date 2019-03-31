@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Travel;
-use App\Switch_DB;
+use App\Switches;
+use App\User;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -60,22 +62,28 @@ class HomeController extends Controller
         return view('indTravel', compact('travel'));
     }
 
-    public function joinTravel($destination, Request $request, $username) {
+    public function joinTravel($destination, Request $request) {
+        //create instance of RegisterController
+        $data = new RegisterController();
+
+        //email of user
+        $email = $data;
+
         //get max num of travellers allowed to join the travel
         $max = DB::table('travels')->where('destination', $destination)->value('max');
         
         //get the num of traveller currently signed up for the travel
         $current = DB::table('switches')->where('destination', $destination)->count();
 
-        //it looks like I have to create a switch_db
-        $switch_db = new Switch_DB($request->all());
+        //switches
+        $switches = new Switches($request->all());
 
         if ($current < $max) {
-            $switch_db->save();
+            $switches->save();
             
-            return Redirect::to('/home')->with('success', true)->with('message','Trip joined successfully!');
+            return Redirect::to('/home')->with('message','Trip joined successfully!');
         } else {
-            return Redirect::to('/home') -> withErrors($validator);
-        }
+            return Redirect::to('/home') -> with("We're sorry, this travel is full!");
+        } 
     }
 }

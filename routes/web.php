@@ -12,7 +12,7 @@
 */
 
 use App\Travel;
-use App\Switch_DB;
+use App\Switches;
 
 Route::get('/', function () {
     return view('welcome');
@@ -28,6 +28,6 @@ Route::get('/home', 'HomeController@index');
 Route::post('/saveNewTravel', 'HomeController@store');
 
 Route::get('/travels/{destination}', 'HomeController@show');
-Route::post('/travels/{destination}/joinTravel', 'HomeController@joinTravel');
+Route::get('/travels/{destination}/joinTravel', 'HomeController@joinTravel');
 
 

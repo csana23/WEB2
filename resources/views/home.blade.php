@@ -9,7 +9,7 @@
     <a class="btn btn-primary btn-lg" href="{{ route('newTravel') }}" role="button"> Create New Travel </a>
     </div>
     
-    <div class="row">
+    <div class="row ml-5 mr-5">
         @foreach($travels as $travel)
         <div class="col-lg-4 col-md-6">
             <div class="card mb-3">
