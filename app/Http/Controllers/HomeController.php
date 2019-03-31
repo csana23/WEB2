@@ -67,7 +67,7 @@ class HomeController extends Controller
         $data = new RegisterController();
 
         //email of user
-        $email = $data;
+        $email = 'richard.csanaki@gmail.com';
 
         //get max num of travellers allowed to join the travel
         $max = DB::table('travels')->where('destination', $destination)->value('max');
@@ -75,15 +75,23 @@ class HomeController extends Controller
         //get the num of traveller currently signed up for the travel
         $current = DB::table('switches')->where('destination', $destination)->count();
 
+        //sending it to view
+        View::make('indTravel',['current' => $current]);
+
         //switches
         $switches = new Switches($request->all());
+        $switches['destination'] = $destination;
+        $switches['email'] = $email;
 
         if ($current < $max) {
             $switches->save();
-            
-            return Redirect::to('/home')->with('message','Trip joined successfully!');
+
+            $successMessage = 'Trip to ' . $destination . ' joined successfully';
+            $failMessage = "We're sorry, the trip to " . $destination . " is ful!";
+
+            return redirect('/home')->with('status', $successMessage);
         } else {
-            return Redirect::to('/home') -> with("We're sorry, this travel is full!");
+            return redirect('/home') -> with('status', $failMessage);
         } 
     }
 }

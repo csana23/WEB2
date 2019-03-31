@@ -16,7 +16,7 @@
     <h3> {{ $travel->desc }} </h3>
 
     <div class="text-right">
-        <h4> Capacity: /{{ $travel->max }} </h4>
+        <h4> Capacity: {{print_r($current)}}/{{ $travel->max }} </h4>
     </div>
 
     <div class="text-right mt-5">

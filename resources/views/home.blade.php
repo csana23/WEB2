@@ -3,6 +3,12 @@
 @section('pageTitle', 'Home')
 
 @section('content')
+    @if (session('status'))
+        <div class="alert alert-success">
+            {{ session('status') }}
+        </div>
+    @endif
+    
     <div class="jumbotron mt-2">
     <h1 class="display-4">Travels</h1>
     <hr class="my-4">
