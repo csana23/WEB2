@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Travel;
 use App\Switches;
 use App\User;
-use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -63,20 +62,14 @@ class HomeController extends Controller
     }
 
     public function joinTravel($destination, Request $request) {
-        //create instance of RegisterController
-        $data = new RegisterController();
-
         //email of user
         $email = 'richard.csanaki@gmail.com';
-
+        
         //get max num of travellers allowed to join the travel
         $max = DB::table('travels')->where('destination', $destination)->value('max');
         
         //get the num of traveller currently signed up for the travel
         $current = DB::table('switches')->where('destination', $destination)->count();
-
-        //sending it to view
-        View::make('indTravel',['current' => $current]);
 
         //switches
         $switches = new Switches($request->all());
@@ -87,7 +80,7 @@ class HomeController extends Controller
             $switches->save();
 
             $successMessage = 'Trip to ' . $destination . ' joined successfully';
-            $failMessage = "We're sorry, the trip to " . $destination . " is ful!";
+            $failMessage = "We're sorry, the trip to " . $destination . " is full!";
 
             return redirect('/home')->with('status', $successMessage);
         } else {

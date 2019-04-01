@@ -27,7 +27,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 Route::post('/saveNewTravel', 'HomeController@store');
 
-Route::get('/travels/{destination}', 'HomeController@show');
+//Route::get('/travels/{destination}', 'HomeController@show');
+Route::get('/travels/{destination}', 'HomeController@show', function(App\Travel $travel, App\User $user, App\Switches $switches) {
+    //return DB::table('switches')->where('destination', $destination)->count();
+    $current = DB::table('switches')->where('destination', $destination)->count();
+
+    return $current;
+});
+
 Route::get('/travels/{destination}/joinTravel', 'HomeController@joinTravel');
 
 
