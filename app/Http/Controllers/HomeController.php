@@ -78,6 +78,7 @@ class HomeController extends Controller
         $switches['destination'] = $destination;
         $switches['email'] = $email;
 
+        //check if travel is full
         if ($current < $max) {
             $switches->save();
 
@@ -89,5 +90,8 @@ class HomeController extends Controller
 
             return redirect('/home') -> with('error', $failMessage);
         } 
+
+        //check if user has already signed up for the trip
+
     }
 }
