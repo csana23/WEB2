@@ -7,6 +7,7 @@ use App\Switches;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -57,14 +58,15 @@ class HomeController extends Controller
 
     public function show($destination) {
         $travel = Travel::where('destination', $destination)->first();
-
-        return view('indTravel', compact('travel'));
+        $current = DB::table('switches')->where('destination', $destination)->count();
+        return view('indTravel', compact('travel'), ['current' => $current]);
     }
 
     public function joinTravel($destination, Request $request) {
-        //email of user
-        $email = 'richard.csanaki@gmail.com';
-        
+        //email of user using Auth facade
+        $user = Auth::user();
+        $email = $user->email;
+
         //get max num of travellers allowed to join the travel
         $max = DB::table('travels')->where('destination', $destination)->value('max');
         
@@ -80,11 +82,12 @@ class HomeController extends Controller
             $switches->save();
 
             $successMessage = 'Trip to ' . $destination . ' joined successfully';
-            $failMessage = "We're sorry, the trip to " . $destination . " is full!";
 
             return redirect('/home')->with('status', $successMessage);
         } else {
-            return redirect('/home') -> with('status', $failMessage);
+            $failMessage = 'We are sorry, the trip to ' . $destination . ' is full!';
+
+            return redirect('/home') -> with('error', $failMessage);
         } 
     }
 }

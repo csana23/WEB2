@@ -8,6 +8,12 @@
             {{ session('status') }}
         </div>
     @endif
+
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+    @endif
     
     <div class="jumbotron mt-2">
     <h1 class="display-4">Travels</h1>
