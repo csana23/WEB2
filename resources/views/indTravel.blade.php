@@ -14,6 +14,8 @@
     <h2> {{ $travel->intro }} </h2>
     <hr class="my-4">
     <h3> {{ $travel->desc }} </h3>
+    <hr class="my-4">
+    <h4 style="color: gray;">Date of travel: {{ $travel->from }} / {{ $travel->to }} </h4>
 
     <div class="text-right">
         <!-- $travel->max -->

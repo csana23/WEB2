@@ -11,17 +11,13 @@ use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Database\QueryException;
 
-class HomeController extends Controller
+class OthersHomeController extends Controller
 {
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -33,14 +29,21 @@ class HomeController extends Controller
         $travels = Travel::all()
                     ->sortByDesc('from');
 
-        return view('home', compact('travels'));
+        return view('othersHome', compact('travels'));
     }
 
-    public function create() {
+    /* public function othersIndex() {
+        $travels = Travel::all()
+                    ->sortByDesc('from');
+
+        return view('othersHome', compact('travels'));
+    } */
+
+    /* public function create() {
         return view('newTravel');
-    }
+    } */
 
-    public function store(Request $request) {
+    /* public function store(Request $request) {
 
         $newTravel = new Travel($request->all());
 
@@ -52,12 +55,12 @@ class HomeController extends Controller
             'from' => 'required',
             'to' => 'required',
             'max' => 'required'
-        ]);
+        ]); 
 
         $newTravel->save();
 
         return redirect('/home');
-    }
+    } */
 
     public function show($destination) {
         $travel = Travel::where('destination', $destination)->first();
@@ -105,5 +108,5 @@ class HomeController extends Controller
         }
 
             
-    }
+    } 
 }

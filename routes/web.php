@@ -13,18 +13,25 @@
 
 use App\Travel;
 use App\Switches;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/home', function() {
+    return view('home');
+});
+
+//->name('newTravel')
 Route::get('/newTravel', function() {
     return view('newTravel');
 })->name('newTravel');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/home', 'HomeController@index');
 Route::post('/saveNewTravel', 'HomeController@store');
 
 //Route::get('/travels/{destination}', 'HomeController@show');
@@ -33,5 +40,7 @@ Route::get('/travels/{destination}', 'HomeController@show', function(App\Travel 
 });
 
 Route::get('/travels/{destination}/joinTravel', 'HomeController@joinTravel');
+
+
 
 
