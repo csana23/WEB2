@@ -16,6 +16,7 @@
     <h3> {{ $travel->desc }} </h3>
 
     <div class="text-right">
+        <!-- $travel->max -->
         <h4> Capacity: {{ $current }} / {{ $travel->max }} </h4>
     </div>
 

@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Exception;
 
 class HomeController extends Controller
 {
@@ -59,6 +60,8 @@ class HomeController extends Controller
     public function show($destination) {
         $travel = Travel::where('destination', $destination)->first();
         $current = DB::table('switches')->where('destination', $destination)->count();
+
+        //return view indTravel with variables
         return view('indTravel', compact('travel'), ['current' => $current]);
     }
 
@@ -78,20 +81,28 @@ class HomeController extends Controller
         $switches['destination'] = $destination;
         $switches['email'] = $email;
 
-        //check if travel is full
-        if ($current < $max) {
+        //check if travel is full - critical operation
+
+        try {
+            if ($current < $max) {
             $switches->save();
 
             $successMessage = 'Trip to ' . $destination . ' joined successfully';
 
             return redirect('/home')->with('status', $successMessage);
-        } else {
-            $failMessage = 'We are sorry, the trip to ' . $destination . ' is full!';
+            } else {
+                $failMessage = 'We are sorry, the trip to ' . $destination . ' is full!';
 
-            return redirect('/home') -> with('error', $failMessage);
-        } 
+                return redirect('/home') -> with('error', $failMessage);
+            }
 
-        //check if user has already signed up for the trip
+        } catch(Exception $e) {
+            dd($e->getMessage());
+        }
+
+        
+
+        //check if user has already signed up for the trip, general exception
 
     }
 }
