@@ -81,9 +81,24 @@ class HomeController extends Controller
         $switches['destination'] = $destination;
         $switches['email'] = $email;
 
-        //check if travel is full - critical operation
-
         try {
+            //check if user has already joined the travel
+            /*
+            $alreadyJoined = DB::table('switches')::firstOrNew(
+                ['destination' => $destination], 
+                ['email' => $email]
+            );
+
+            if ($alreadyJoined === null) {
+                $switches->save();
+            } else {
+                return redirect('home')->with('error', 'You have already joined this trip!');
+            } */
+            if ($switches->exists) {
+                return redirect('home')->with('error', 'You have already joined this trip!');
+            }
+
+            //check if travel is full
             if ($current < $max) {
             $switches->save();
 
@@ -98,11 +113,7 @@ class HomeController extends Controller
 
         } catch(Exception $e) {
             dd($e->getMessage());
+            //return redirect('home')->with('error', 'Something went wrong!');
         }
-
-        
-
-        //check if user has already signed up for the trip, general exception
-
     }
 }
