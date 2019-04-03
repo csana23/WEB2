@@ -30,8 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $travels = Travel::all();
-        //->sortByDesc('from');            
+        $travels = Travel::all()
+                    ->sortBy('from');            
 
         return view('home', compact('travels'));
     }
@@ -53,7 +53,19 @@ class HomeController extends Controller
             'max' => 'required'
         ]);
 
-        $newTravel->save();
+        //risky play
+        try {
+            $newTravel->save();
+
+        } catch(Exception $e) {
+            if ($e instanceof QueryException) {
+                return redirect('home')->with('error', 'This destination is already in the database!');
+            } else {
+                return redirect('home')->with('error', 'Something went wrong!');
+            }
+        }
+
+        
 
         return redirect('/home');
     }

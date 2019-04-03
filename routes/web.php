@@ -22,9 +22,11 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/newTravel', 'HomeController@create');
+Route::get('/newTravel', 'HomeController@create', function() {
+    return view('newTravel');
+});
 Auth::routes();
-Route::post('/newTravel/saveNewTravel', 'HomeController@store');
+Route::post('/saveNewTravel', 'HomeController@store');
 Route::get('/travels/{destination}', 'HomeController@show');
 
 Route::get('/travels/{destination}/joinTravel', 'HomeController@joinTravel');

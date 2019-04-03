@@ -1,10 +1,10 @@
 @extends('layouts/app') 
 
-@section('pageTitle', 'Yolooo')
+@section('pageTitle', 'New Travel')
 
 @section('content')
 
-<form action="/newTravel/saveNewTravel" method="post" id="myform">
+<form action="/saveNewTravel" method="post" id="myform">
     {{ csrf_field() }}
 
     <h1 class="mt-2">New Travel</h1>

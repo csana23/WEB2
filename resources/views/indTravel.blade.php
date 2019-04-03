@@ -1,4 +1,6 @@
 @extends('layouts/app') 
+@section('pageTitle', 'Details of travel')
+
 @section('content')
 <h1 class="mt-2 ml-3">{{ $travel->destination }}</h1>
 

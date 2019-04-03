@@ -18,7 +18,7 @@
     <div class="jumbotron mt-2">
     <h1 class="display-4">Travels</h1>
     <hr class="my-4">
-    <a class="btn btn-primary btn-lg" href="{{ route('newTravel') }}" role="button"> Create New Travel </a>
+    <a class="btn btn-primary btn-lg" href="{{ url('/newTravel') }}" role="button"> Create New Travel </a>
     </div>
     
     <div class="row ml-5 mr-5">
