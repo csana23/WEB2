@@ -20,24 +20,12 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', function() {
-    return view('home');
-});
+Route::get('/home', 'HomeController@index');
 
-//->name('newTravel')
-Route::get('/newTravel', function() {
-    return view('newTravel');
-})->name('newTravel');
-
+Route::get('/newTravel', 'HomeController@create');
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index');
-Route::post('/saveNewTravel', 'HomeController@store');
-
-//Route::get('/travels/{destination}', 'HomeController@show');
-Route::get('/travels/{destination}', 'HomeController@show', function(App\Travel $travel, App\User $user, App\Switches $switches) {
-    
-});
+Route::post('/newTravel/saveNewTravel', 'HomeController@store');
+Route::get('/travels/{destination}', 'HomeController@show');
 
 Route::get('/travels/{destination}/joinTravel', 'HomeController@joinTravel');
 

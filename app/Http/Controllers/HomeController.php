@@ -30,8 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $travels = Travel::all()
-                    ->sortByDesc('from');
+        $travels = Travel::all();
+        //->sortByDesc('from');            
 
         return view('home', compact('travels'));
     }
@@ -44,7 +44,6 @@ class HomeController extends Controller
 
         $newTravel = new Travel($request->all());
 
-        
         $validatedData = $request->validate([
             'destination' => 'required',
             'intro' => 'required',
