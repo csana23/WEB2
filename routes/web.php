@@ -19,6 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//admin
+Route::get('/admin', 'AdminController@index');
 
 Route::get('/home', 'HomeController@index');
 
