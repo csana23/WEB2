@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form action="/saveNewTravel" method="post" id="myform">
+<form action="{{ url('admin/saveNewTravel') }}" method="post" id="myform">
     {{ csrf_field() }}
 
     <h1 class="mt-2">New Travel</h1>

@@ -1,6 +1,6 @@
 @extends('layouts.app') 
 
-@section('pageTitle', 'Home') 
+@section('pageTitle', 'Admin boi') 
 
 @section('content') 
     @if (session('status'))

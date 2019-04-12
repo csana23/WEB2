@@ -36,10 +36,12 @@ class HomeController extends Controller
         return view('home', compact('travels'));
     }
 
+    /*
     public function create() {
         return view('newTravel');
-    }
+    } */
 
+    /*
     public function store(Request $request) {
 
         $newTravel = new Travel($request->all());
@@ -68,7 +70,7 @@ class HomeController extends Controller
         
 
         return redirect('/home');
-    }
+    }*/
 
     public function show($destination) {
         $travel = Travel::where('destination', $destination)->first();
