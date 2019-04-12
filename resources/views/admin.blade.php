@@ -16,4 +16,5 @@
     @endif
 
     <h1>YOOOO BOI ITS ADMIN BITCHES</h1>
+    <a class="btn btn-primary btn-lg btn-block" href="{{ url('admin/newTravel') }}" role="button"> Create New Travel </a>
 @endsection
