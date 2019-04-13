@@ -1,4 +1,4 @@
-@extends('layouts/app') 
+@extends('layouts/adminLayout') 
 
 @section('pageTitle', 'New Travel')
 
@@ -21,7 +21,7 @@
 
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
             <li class="breadcrumb-item active" aria-current="page">New Travel
             </li>
         </ol>
