@@ -56,14 +56,12 @@ class AdminController extends Controller
 
         } catch(Exception $e) {
             if ($e instanceof QueryException) {
-                return redirect('home')->with('error', 'This destination is already in the database!');
+                return redirect('admin')->with('error', 'This destination is already in the database!');
             } else {
-                return redirect('home')->with('error', 'Something went wrong!');
+                return redirect('admin')->with('error', 'Something went wrong!');
             }
         }
 
-        
-
-        return redirect('/admin');
+        return redirect('/admin')->with('status', 'Trip created!');
     }
 }

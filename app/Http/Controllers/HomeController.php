@@ -36,42 +36,6 @@ class HomeController extends Controller
         return view('home', compact('travels'));
     }
 
-    /*
-    public function create() {
-        return view('newTravel');
-    } */
-
-    /*
-    public function store(Request $request) {
-
-        $newTravel = new Travel($request->all());
-
-        $validatedData = $request->validate([
-            'destination' => 'required',
-            'intro' => 'required',
-            'desc' => 'required',
-            'from' => 'required',
-            'to' => 'required',
-            'max' => 'required'
-        ]);
-
-        //risky play
-        try {
-            $newTravel->save();
-
-        } catch(Exception $e) {
-            if ($e instanceof QueryException) {
-                return redirect('home')->with('error', 'This destination is already in the database!');
-            } else {
-                return redirect('home')->with('error', 'Something went wrong!');
-            }
-        }
-
-        
-
-        return redirect('/home');
-    }*/
-
     public function show($destination) {
         $travel = Travel::where('destination', $destination)->first();
         $current = DB::table('switches')->where('destination', $destination)->count();
