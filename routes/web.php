@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::post('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 //admin
 Route::prefix('admin')->group(function() {
@@ -34,13 +34,9 @@ Route::prefix('admin')->group(function() {
 
 Route::get('/home', 'HomeController@index');
 
-// Route::get('/newTravel', 'HomeController@create', function() {
-//     return view('newTravel');
-// });
 Auth::routes();
-// Route::post('/saveNewTravel', 'HomeController@store');
-Route::get('/travels/{destination}', 'HomeController@show');
 
+Route::get('/travels/{destination}', 'HomeController@show');
 Route::get('/travels/{destination}/joinTravel', 'HomeController@joinTravel');
 
 

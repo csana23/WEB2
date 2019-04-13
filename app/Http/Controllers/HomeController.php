@@ -31,7 +31,7 @@ class HomeController extends Controller
     public function index()
     {
         $travels = Travel::all()
-                    ->sortBy('from');            
+                    ->sortBy('from');           
 
         return view('home', compact('travels'));
     }
